@@ -57,6 +57,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
   }
 
   function whack(agent) {
+    console.log('whack');
     agent.add('Starting game');
     /*
     agent.ask(new MediaObject({
@@ -80,10 +81,12 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
     agent.add(response);
   }
 
-    // Run the proper function handler based on the matched Dialogflow intent name
-    let intentMap = new Map();
-    intentMap.set('Configure traffic split', consul);
-    intentMap.set('Whack-a-pod', whack);
+  // Run the proper function handler based on the matched Dialogflow intent name
+  let intentMap = new Map();
+ 
+  intentMap.set('Configure traffic split', consul);
+  intentMap.set('Whack-a-pod', whack);
   //intentMap.set('actions.intent.MEDIA_STATUS', done);
-    agent.handleRequest(intentMap);
+  
+  agent.handleRequest(intentMap);
 });
