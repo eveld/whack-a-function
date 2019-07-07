@@ -57,7 +57,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
   }
 
   function whack(agent) {
-    agent.ask('Starting game');
+    agent.add('Starting game');
     /*
     agent.ask(new MediaObject({
       name: 'Jazz in Paris',
@@ -77,7 +77,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
     if (mediaStatus && mediaStatus.status === 'FINISHED') {
       response = 'Hope you enjoyed the tunes!';
     }
-    agent.ask(response);
+    agent.add(response);
   }
 
     // Run the proper function handler based on the matched Dialogflow intent name
