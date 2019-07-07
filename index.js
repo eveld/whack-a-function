@@ -86,6 +86,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
  
   intentMap.set('Configure traffic split', consul);
   intentMap.set('Whack-a-pod', whack);
+  intentMap.set('Testing', whack);
   //intentMap.set('actions.intent.MEDIA_STATUS', done);
   
   agent.handleRequest(intentMap);
