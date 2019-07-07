@@ -57,10 +57,15 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
   }
 
   function whack(agent) {
+    agent.ask('Starting game');
     agent.ask(new MediaObject({
       name: 'Jazz in Paris',
       url: 'https://actions.google.com/sounds/v1/alarms/digital_watch_alarm_long.ogg"',
-      description: 'A funky Jazz tune'
+      description: 'A funky Jazz tune',
+      icon: new Image({
+        url: 'https://storage.googleapis.com/automotive-media/album_art.jpg',
+        alt: 'Album cover of an ccean view',
+      }),
     }));
   }
 
