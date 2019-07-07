@@ -15,6 +15,9 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
   console.log('Dialogflow Request body: ' + JSON.stringify(request.body));
 
   function consul(agent) {
+    agent.add("done");
+    return;
+
     var percent = request.body.queryResult.parameters.canary;
 
     if (percent > 100 || percent < 0) {
