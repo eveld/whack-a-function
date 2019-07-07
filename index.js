@@ -58,6 +58,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
 
   function whack(agent) {
     agent.ask('Starting game');
+    /*
     agent.ask(new MediaObject({
       name: 'Jazz in Paris',
       url: 'https://actions.google.com/sounds/v1/alarms/digital_watch_alarm_long.ogg"',
@@ -67,6 +68,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
         alt: 'Album cover of an ccean view',
       }),
     }));
+    */
   }
 
   function done(agent) {
