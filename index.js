@@ -57,21 +57,11 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
     }
 
     function whack() {
-        return new Promise(resolve => {
-            agent.add("Setting interval");
-            
-            let i = 0;
-            setInterval(() => {
-                agent.add(i + " seconds");
-                if (i > 3) {
-                    resolve();
-                }
-
-                i++;
-            }, 1000);
-        }).then(value => {
-            agent.add("game over");
-        });
+        let text_to_speech = '<speak>'
+        + 'I can play a sound'
+        + '<audio src="https://actions.google.com/sounds/v1/alarms/digital_watch_alarm_long.ogg">a digital watch alarm</audio>. '
+        + '</speak>'
+        assistant.tell(text_to_speech);
     }
 
     // Run the proper function handler based on the matched Dialogflow intent name
