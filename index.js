@@ -56,18 +56,27 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
         });
     }
 
-    function whack() {
-        let text_to_speech = '<speak>'
-        + 'I can play a sound'
-        + '<audio src="https://actions.google.com/sounds/v1/alarms/digital_watch_alarm_long.ogg">a digital watch alarm</audio>. '
-        + '</speak>'
-        assistant.tell(text_to_speech);
+  function whack(agent) {
+    agent.ask(new MediaObject({
+      name: 'Jazz in Paris',
+      url: 'https://actions.google.com/sounds/v1/alarms/digital_watch_alarm_long.ogg"',
+      description: 'A funky Jazz tune'
+    }));
+  }
+
+  function done(agent) {
+    const mediaStatus = agent.arguments.get('MEDIA_STATUS');
+    let response = 'Unknown media status received.';
+    if (mediaStatus && mediaStatus.status === 'FINISHED') {
+      response = 'Hope you enjoyed the tunes!';
     }
+    agent.ask(response);
+  }
 
     // Run the proper function handler based on the matched Dialogflow intent name
     let intentMap = new Map();
     intentMap.set('Configure traffic split', consul);
     intentMap.set('Whack-a-pod', whack);
-
+    intentMap.set('actions.intent.MEDIA_STATUS', done);
     agent.handleRequest(intentMap);
 });
