@@ -72,7 +72,7 @@ function consul(agent) {
 
 function whack(conv) {
   console.log('whack');
-  conv.ask('Staring game');
+  conv.ask('Starting game');
   conv.ask(
     new MediaObject('https://actions.google.com/sounds/v1/alarms/digital_watch_alarm_long.ogg')
   );
@@ -91,7 +91,7 @@ function done(conv) {
 const app = dialogflow({debug: true});
 app.intent('Configure traffic split', consul);
 app.intent('Test', whack);
-//intentMap.set('actions.intent.MEDIA_STATUS', done);
+app.intent('actions.intent.MEDIA_STATUS', done);
 
 exports.dialogflowFirebaseFulfillment = functions.https.onRequest(app)
 
