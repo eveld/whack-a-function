@@ -72,6 +72,7 @@ function consul(agent) {
 
 function whack(conv) {
   console.log('whack');
+  conv.ask('Staring game');
   conv.ask(
     new MediaObject('https://actions.google.com/sounds/v1/alarms/digital_watch_alarm_long.ogg')
   );
