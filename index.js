@@ -26,8 +26,7 @@ process.env.DEBUG = 'dialogflow:debug'; // enables lib debugging statements
 //console.log('Dialogflow Request body: ' + JSON.stringify(request.body));
 
 function consul(conv) {
-
-  console.log(conv);
+  console.log('Consul '+conv);
   var percent = request.body.queryResult.parameters.canary;
 
   if (percent > 100 || percent < 0) {
@@ -73,7 +72,7 @@ function whack(conv) {
   console.log('whack');
   conv.ask('Starting game');
   conv.ask(
-    new MediaObject('https://actions.google.com/sounds/v1/alarms/digital_watch_alarm_long.ogg')
+    new MediaObject('https://storage.googleapis.com/consul-files/tick.ogg')
   );
 }
 
