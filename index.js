@@ -27,7 +27,6 @@ process.env.DEBUG = 'dialogflow:debug'; // enables lib debugging statements
 
 function consul(conv) {
   console.log('Consul ' + JSON.stringify(conv));
-  return;
   var percent = conv.request.queryResult.parameters.canary;
 
   if (percent > 100 || percent < 0) {
