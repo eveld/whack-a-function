@@ -64,7 +64,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
     agent.add('Starting game v2');
     agent.ask(new MediaObject({
       name: 'Jazz in Paris',
-      url: 'https://actions.google.com/sounds/v1/alarms/digital_watch_alarm_long.ogg"',
+      url: 'https://actions.google.com/sounds/v1/alarms/digital_watch_alarm_long.ogg',
       description: 'A funky Jazz tune',
       icon: new Image({
         url: 'https://storage.googleapis.com/automotive-media/album_art.jpg',
