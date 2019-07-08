@@ -44,7 +44,7 @@ function consul(conv) {
               "ServiceSubset": "v1"
           },
           {
-              "Weight": percent,
+              "Weight": parseInt(percent),
               "Service": "api",
               "ServiceSubset": "v2"
           }
