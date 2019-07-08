@@ -89,11 +89,9 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
     agent.close(response);
   }
 
-  // Run the proper function handler based on the matched Dialogflow intent name
-  let intentMap = new Map();
  
+  const app = dialogflow({debug: true});
   app.intent('Configure traffic split', consul);
   app.intent('Test', whack);
   //intentMap.set('actions.intent.MEDIA_STATUS', done);
-  const app = dialogflow({debug: true});
 });
