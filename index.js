@@ -79,7 +79,8 @@ function whack(conv) {
 }
 
 function done(conv) {
-  const mediaStatus = agent.arguments.get('MEDIA_STATUS');
+  console.log(conv);
+  const mediaStatus = conv.arguments.get('MEDIA_STATUS');
   let response = 'Unknown media status received.';
   if (mediaStatus && mediaStatus.status === 'FINISHED') {
     response = 'Hope you enjoyed the tunes!';
