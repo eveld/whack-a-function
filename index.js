@@ -34,7 +34,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
     var percent = request.body.queryResult.parameters.canary;
 
     if (percent > 100 || percent < 0) {
-        agent.add("Are you sure you know how percentages work?");
+        agent.close("Are you sure you know how percentages work?");
         return;
     }
 
@@ -68,13 +68,13 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
         });
     }).then(value => {
         // process value here
-        agent.add('Ok done. So is voice ops the new git ops then? How are you planning to version control your voice? Storing MP3 in github?');
+        agent.close('Ok done. So is voice ops the new git ops then? How are you planning to version control your voice? Storing MP3 in github?');
     });
   }
 
   function whack(agent) {
     console.log('whack');
-    agent.add('Starting game v2');
+    agent.ask('Starting game v2');
     agent.ask(
       new MediaObject('https://actions.google.com/sounds/v1/alarms/digital_watch_alarm_long.ogg')
     );
@@ -86,15 +86,14 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
     if (mediaStatus && mediaStatus.status === 'FINISHED') {
       response = 'Hope you enjoyed the tunes!';
     }
-    agent.add(response);
+    agent.close(response);
   }
 
   // Run the proper function handler based on the matched Dialogflow intent name
   let intentMap = new Map();
  
-  intentMap.set('Configure traffic split', consul);
-  intentMap.set('Test', whack);
+  app.intent('Configure traffic split', consul);
+  app.intent('Test', whack);
   //intentMap.set('actions.intent.MEDIA_STATUS', done);
-  
-  agent.handleRequest(intentMap);
+  const app = dialogflow({debug: true});
 });
