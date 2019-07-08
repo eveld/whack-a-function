@@ -91,7 +91,7 @@ function done(conv) {
 
 
 const app = dialogflow({debug: true});
-app.intent('Configure traffic split', consul);
+app.intent('Traffic split', consul);
 app.intent('Test', whack);
 app.intent('Done', done);
 
