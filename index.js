@@ -51,6 +51,8 @@ function consul(conv) {
       ]
   };
 
+  console.log("payload: " + JSON.stringify(payload));
+
   return new Promise(resolve => {
       http({
           url: 'http://consul.google.demo.gs/v1/config',
