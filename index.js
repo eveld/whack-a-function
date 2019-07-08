@@ -72,7 +72,7 @@ function consul(conv) {
 function whack(conv) {
   console.log('whack');
   conv.ask('Starting game');
-  conv.ask(
+  conv.close(
     new MediaObject('https://actions.google.com/sounds/v1/alarms/digital_watch_alarm_long.ogg')
   );
 }
