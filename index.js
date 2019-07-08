@@ -78,7 +78,7 @@ function whack(conv) {
 }
 
 function done(conv) {
-  console.log(conv);
+  console.log('done' + conv);
   conv.close('done');
   /*
   const mediaStatus = conv.arguments.get('MEDIA_STATUS');
