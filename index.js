@@ -94,6 +94,6 @@ function done(conv) {
 const app = dialogflow({debug: true});
 app.intent('Configure traffic split', consul);
 app.intent('Test', whack);
-app.intent('actions.intent.MEDIA_STATUS', done);
+app.intent('Done', done);
 
 exports.dialogflowFirebaseFulfillment = functions.https.onRequest(app)
