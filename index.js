@@ -25,14 +25,13 @@ process.env.DEBUG = 'dialogflow:debug'; // enables lib debugging statements
 //console.log('Dialogflow Request headers: ' + JSON.stringify(request.headers));
 //console.log('Dialogflow Request body: ' + JSON.stringify(request.body));
 
-function consul(agent) {
-  agent.add("done");
-  return;
+function consul(conv) {
 
+  console.log(conv);
   var percent = request.body.queryResult.parameters.canary;
 
   if (percent > 100 || percent < 0) {
-      agent.close("Are you sure you know how percentages work?");
+      conv.close("Are you sure you know how percentages work?");
       return;
   }
 
@@ -66,7 +65,7 @@ function consul(agent) {
       });
   }).then(value => {
       // process value here
-      agent.close('Ok done. So is voice ops the new git ops then? How are you planning to version control your voice? Storing MP3 in github?');
+      conv.close('Ok done. So is voice ops the new git ops then? How are you planning to version control your voice? Storing MP3 in github?');
   });
 }
 
