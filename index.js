@@ -91,8 +91,8 @@ function done(conv) {
 
 
 const app = dialogflow({debug: true});
-app.intent('Traffic split', consul);
-app.intent('Test', whack);
+app.intent('Traffic Split', consul);
+app.intent('Play', whack);
 app.intent('Done', done);
 
 exports.dialogflowFirebaseFulfillment = functions.https.onRequest(app)
