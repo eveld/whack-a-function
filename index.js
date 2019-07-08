@@ -79,12 +79,15 @@ function whack(conv) {
 
 function done(conv) {
   console.log(conv);
+  conv.close('done');
+  /*
   const mediaStatus = conv.arguments.get('MEDIA_STATUS');
   let response = 'Unknown media status received.';
   if (mediaStatus && mediaStatus.status === 'FINISHED') {
     response = 'Hope you enjoyed the tunes!';
   }
   conv.close(response);
+  */
 }
 
 
@@ -94,4 +97,3 @@ app.intent('Test', whack);
 app.intent('actions.intent.MEDIA_STATUS', done);
 
 exports.dialogflowFirebaseFulfillment = functions.https.onRequest(app)
-
